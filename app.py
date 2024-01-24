@@ -43,7 +43,6 @@ app.layout = html.Div([
 
     dcc.Graph(id='salary-bar'),
     dcc.Graph(id='dollar-value-bar'),
-    dcc.Graph(id='overall-value-bar'),
 
     dash_table.DataTable(
         id='table-graph',
@@ -61,7 +60,6 @@ app.layout = html.Div([
      Output('player-dropdown-team2', 'options'),
      Output('salary-bar', 'figure'),
      Output('dollar-value-bar', 'figure'),
-     Output('overall-value-bar', 'figure'),
      Output('table-graph', 'data')],
     [Input('team-dropdown', 'value'),
      Input('player-dropdown-team1', 'value'),
@@ -97,13 +95,11 @@ def update_content(selected_teams, selected_players_team1, selected_players_team
     dollar_value_fig = px.bar(
         summed_dollar_value, x='Team', y='dollar_value', title='Summed Dollar Value')
 
-    # Bar graph for Overall
-    overall_fig = px.bar(filtered_df, x='Team', y='Overall_Value', color='Name', title='Player Overall Value Comparison')
 
     # DataTable
     table_data = filtered_df.to_dict('records')
 
-    return options_team1, options_team2, salary_fig, dollar_value_fig, overall_fig, table_data
+    return options_team1, options_team2, salary_fig, dollar_value_fig, table_data
 
 # Run the app
 if __name__ == '__main__':
