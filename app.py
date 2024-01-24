@@ -6,7 +6,7 @@ import plotly.express as px
 
 
 
-df = pd.read_csv('Final_Ranks.csv')
+df = pd.read_csv('Final_ranks.csv')
 
 # Unique teams for dropdown
 teams = df['Team'].unique()
